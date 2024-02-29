@@ -3,11 +3,11 @@ const readline = require('readline');
 // Creating an interface to read input from the console
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 // Displaying a message to the user
-console.log('Welcome to Holberton School, what is your name?');
+console.log('Welcome to Holberton School, what is your name?\n');
 
 // Listening for user input
 rl.on('line', (input) => {
