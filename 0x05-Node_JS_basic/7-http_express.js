@@ -36,8 +36,7 @@ app.get('/students', async (req, res) => {
     res.end();
   } catch (error) {
     res.writeHead(500, { 'Content-Type': 'text/plain' });
-    res.write('This is the list of our students\n');
-    res.end('Cannot load the database\n');
+    res.end(`This is the list of our students Cannot load the database`);
   }
 });
 
