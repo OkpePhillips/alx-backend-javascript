@@ -10,8 +10,9 @@ const app = http.createServer((req, res) => {
     const filePath = process.argv[2];
     countStudents(filePath)
       .then(({ studentCount, studentFields }) => {
-	res.statusCode = 200;
-	let responseText = `Number of students: ${studentCount}\n`;
+        res.statusCode = 200;
+        let responseText = 'This is the list of our students\n';
+        responseText += `Number of students: ${studentCount}\n`;
         const fields = Object.entries(studentFields);
         fields.forEach(([field, { count, list }], index) => {
           responseText += `Number of students in ${field}: ${count}. List: `;
@@ -26,9 +27,9 @@ const app = http.createServer((req, res) => {
         });
         res.end(responseText);
       })
-      .catch(error => {
-	res.statusCode = 500;
-	res.end(`Error: ${error.message}\n`);
+      .catch((error) => {
+        res.statusCode = 500;
+        res.end(`Error: ${error.message}\n`);
       });
   } else {
     res.statusCode = 404;
