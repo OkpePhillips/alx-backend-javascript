@@ -8,7 +8,7 @@ class StudentsController {
 
       const sortedFields = Object.keys(studentFields).sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));
 
-      sortedFields.forEach(field => {
+      sortedFields.forEach((field) => {
         const count = studentFields[field].length;
         const list = studentFields[field].join(', ');
         responseText += `Number of students in ${field}: ${count}. List: ${list}\n`;
@@ -19,6 +19,7 @@ class StudentsController {
       res.status(500).send('Cannot load the database');
     }
   }
+
   static async getAllStudentsByMajor(req, res) {
     try {
       const { major } = req.params;

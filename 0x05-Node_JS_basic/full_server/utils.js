@@ -10,11 +10,9 @@ function readDatabase(filePath) {
 
       const lines = data.trim().split('\n');
       const studentFields = {};
+      const nonEmptyLines = lines.slice(1).filter((line) => line.trim() !== '');
 
-      for (const line of lines.slice(1)) {
-        if (line.trim() === '') {
-          continue;
-        }
+      for (const line of nonEmptyLines) {
         const fields = line.split(',');
         const firstName = fields[0];
         const major = fields[3];
