@@ -4,13 +4,10 @@ function countStudents(filePath) {
   try {
     const data = fs.readFileSync(filePath, 'utf-8');
     const lines = data.trim().split('\n');
-    const studentLines = lines.slice(1);
+    const studentLines = lines.slice(1).filter((line) => line.trim() !== '');
     let studentCount = 0;
     const studentFields = {};
     for (const line of studentLines) {
-      if (line.trim() === '') {
-        continue;
-      }
       const fields = line.split(',');
       studentCount += 1;
       const firstName = fields[0];
@@ -22,7 +19,7 @@ function countStudents(filePath) {
     }
     console.log(`Number of students: ${studentCount}`);
     for (const field in studentFields) {
-      if (studentFields.hasOwnProperty(field)) {
+      if (studentFields[field]) {
         const { count, list } = studentFields[field];
         console.log(`Number of students in ${field}: ${count}. List: ${list.join(', ')}`);
       }
